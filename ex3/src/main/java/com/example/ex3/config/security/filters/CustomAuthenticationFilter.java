@@ -26,7 +26,7 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
         CustomAuthentication ca = new CustomAuthentication(false, key);
 
         // 2. delegate to authentication manager
-        var a = customAuthenticationManager.authenticate(null);
+        var a = customAuthenticationManager.authenticate(ca);
 
         // 3. get back authentication from manager
         if (a.isAuthenticated()) {
