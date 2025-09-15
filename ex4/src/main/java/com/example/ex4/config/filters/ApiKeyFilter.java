@@ -31,16 +31,20 @@ public class ApiKeyFilter extends OncePerRequestFilter {
         }
 
         var auth = new ApiKeyAuthentication(requestKey);
+
         try {
             var authentication = authenticationManager.authenticate(auth);
             if (authentication.isAuthenticated()) {
                 SecurityContextHolder.getContext().setAuthentication(authentication);
-                filterChain.doFilter(request, response);
+                return; // Skip the rest of the filter chain
             } else {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             }
         } catch (AuthenticationException e) {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
+
+        // Else, continue the filter chain
+        filterChain.doFilter(request, response);
     }
 }
