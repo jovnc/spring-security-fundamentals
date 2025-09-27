@@ -1,0 +1,15 @@
+# curl --location --request POST 'http://localhost:8080/oauth2/token'
+#--header 'Content-Type: application/x-www-form-urlencoded'
+#--header 'Authorization: Basic b2lkYy1jbGllbnQ6c2VjcmV0'
+#--data-urlencode 'grant_type=authorization_code'
+#--data-urlencode 'code=YOUR_CODE_FROM_THE_BROWSER_HERE'
+#--data-urlencode 'redirect_uri=http://127.0.0.1:8080/login/oauth2/code/oidc-client'
+POST http://localhost:8080/oauth2/token
+Authorization: Basic b2lkYy1jbGllbnQ6c2VjcmV0
+Content-Type: application/x-www-form-urlencoded
+
+grant_type = authorization_code &
+code = YOUR_CODE_FROM_THE_BROWSER_HERE &
+redirect_uri = http%3A%2F%2F127.0.0.1%3A8080%2Flogin%2Foauth2%2Fcode%2Foidc-client
+
+###
